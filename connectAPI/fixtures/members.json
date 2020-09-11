@@ -1,0 +1,21 @@
+[
+    {
+        "model": "connectAPI.member",
+        "pk": 1,
+        "fields": {
+            "user_id": 1,
+            "address": "625 Mechanic Street, Dawsonville, GA 30534",
+            "phone_number": "(671) 739-2909"
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 2,
+        "fields": {
+            "user_id": 2,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone_number": "(784) 268-8578"
+        }
+    }
+   
+]
