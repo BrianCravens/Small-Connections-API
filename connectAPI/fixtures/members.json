@@ -5,7 +5,10 @@
         "fields": {
             "user_id": 1,
             "address": "625 Mechanic Street, Dawsonville, GA 30534",
-            "phone_number": "(671) 739-2909"
+            "phone": "(671) 739-2909",
+            "birthday": "1980-05-13",
+            "image": "",
+            "is_admin": true
         }
     },
     {
@@ -14,7 +17,70 @@
         "fields": {
             "user_id": 2,
             "address": "714 Campfire Road, Kalispell, MT 59901",
-            "phone_number": "(784) 268-8578"
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 3,
+        "fields": {
+            "user_id": 3,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 4,
+        "fields": {
+            "user_id": 4,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 5,
+        "fields": {
+            "user_id": 5,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 6,
+        "fields": {
+            "user_id": 6,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "connectAPI.member",
+        "pk": 7,
+        "fields": {
+            "user_id": 7,
+            "address": "714 Campfire Road, Kalispell, MT 59901",
+            "phone": "(784) 268-8578",
+            "birthday": "1988-05-19",
+            "image": "",
+            "is_admin": false
         }
     }
    

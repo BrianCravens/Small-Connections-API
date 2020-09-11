@@ -1,0 +1,53 @@
+[
+    {
+        "model": "connectAPI.message",
+        "pk": 1,
+        "fields": {
+            "member_id": 1,
+            "group_id": 1,
+            "date": "2020-09-09",
+            "description": "This App is Awesome"
+        }
+    },
+    {
+        "model": "connectAPI.message",
+        "pk": 2,
+        "fields": {
+            "member_id": 3,
+            "group_id": 1,
+            "date": "2020-10-09",
+            "description": "Heck yes it is!!"
+        }
+    },
+    {
+        "model": "connectAPI.message",
+        "pk": 3,
+        "fields": {
+            "member_id": 1,
+            "group_id": 1,
+            "date": "2020-11-09",
+            "description": "I know right!!!"
+        }
+    },
+    {
+        "model": "connectAPI.message",
+        "pk": 4,
+        "fields": {
+            "member_id": 2,
+            "group_id": 2,
+            "date": "2020-10-09",
+            "description": "Yo yo yo"
+        }
+    },
+    {
+        "model": "connectAPI.message",
+        "pk": 5,
+        "fields": {
+            "member_id": 2,
+            "group_id": 2,
+            "date": "2020-11-09",
+            "description": "There's no one in my group!!!"
+        }
+    }
+    
+]

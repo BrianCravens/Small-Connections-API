@@ -1,0 +1,42 @@
+[
+    {
+        "model": "connectAPI.meeting",
+        "pk": 1,
+        "fields": {
+            "group_id": 1,
+            "member_id": 1,
+            "date": "2020-9-10",
+            "content": "This is where you will have the content for all the info you want your group to go over during your meeting!!",
+            "title": "HABAKKUK",
+            "image": "https://i1.wp.com/tjclive.com/wp-content/uploads/2020/05/IMG_1246.jpg?ssl=1",
+            "url": "https://tjclive.com/sunday-06-07-20-2/"
+        }
+    },
+    {
+        "model": "connectAPI.meeting",
+        "pk": 2,
+        "fields": {
+            "group_id": 1,
+            "member_id": 1,
+            "date": "2020-10-10",
+            "content": "This is where you will have the content for all the info you want your group to go over during your meeting!!",
+            "title": "HABAKKUK",
+            "image": "https://i1.wp.com/tjclive.com/wp-content/uploads/2020/05/IMG_1246.jpg?ssl=1",
+            "url": "https://tjclive.com/sunday-06-07-20-2/"
+        }
+    },
+    {
+        "model": "connectAPI.meeting",
+        "pk": 3,
+        "fields": {
+            "group_id": 2,
+            "member_id": 2,
+            "date": "2020-10-9",
+            "content": "This is where you will have the content for all the info you want your group to go over during your meeting!!",
+            "title": "HABAKKUK",
+            "image": "https://i1.wp.com/tjclive.com/wp-content/uploads/2020/05/IMG_1246.jpg?ssl=1",
+            "url": "https://tjclive.com/sunday-06-07-20-2/"
+        }
+    }
+    
+]

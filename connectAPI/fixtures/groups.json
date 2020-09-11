@@ -1,0 +1,32 @@
+[
+    {
+        "model": "connectAPI.group",
+        "pk": 1,
+        "fields": {
+            "leader_id": 1,
+            "name": "Cravens",
+            "address": "128 Awesome St.",
+            "city": "Lebanon",
+            "state": "TN",
+            "capacity": 10,
+            "schedule": "Wednesdays @ 6:00pm",
+            "image": "",
+            "kids": true
+        }
+    },
+    {
+        "model": "connectAPI.group",
+        "pk": 2,
+        "fields": {
+            "leader_id": 2,
+            "name": "Blaggs",
+            "address": "128 Main St.",
+            "city": "Lebanon",
+            "state": "TN",
+            "capacity": 10,
+            "schedule": "Sundays @ 12:00pm",
+            "image": "",
+            "kids": false
+        }
+    }
+]

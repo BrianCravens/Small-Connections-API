@@ -1,0 +1,62 @@
+[
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 1,
+        "fields": {
+            "member_id": 1,
+            "group_id": 1,
+            "is_approved": true,
+            "date": "2020-04-1"
+        }
+    },
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 2,
+        "fields": {
+            "member_id": 2,
+            "group_id": 2,
+            "is_approved": true,
+            "date": "2020-05-16"
+        }
+    },
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 3,
+        "fields": {
+            "member_id": 3,
+            "group_id": 1,
+            "is_approved": true,
+            "date": "2020-06-11"
+        }
+    },
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 4,
+        "fields": {
+            "member_id": 4,
+            "group_id": 1,
+            "is_approved": false,
+            "date": "2020-06-17"
+        }
+    },
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 5,
+        "fields": {
+            "member_id": 5,
+            "group_id": 1,
+            "is_approved": false,
+            "date": "2020-06-18"
+        }
+    },
+    {
+        "model": "connectAPI.membergroup",
+        "pk": 6,
+        "fields": {
+            "member_id": 6,
+            "group_id": 2,
+            "is_approved": false,
+            "date": "2020-06-19"
+        }
+    }
+]

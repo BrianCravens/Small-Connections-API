@@ -1,0 +1,54 @@
+[
+    {
+        "model": "connectAPI.prayer",
+        "pk": 1,
+        "fields": {
+            "member_id": 1,
+            "group_id": 1,
+            "date": "2020-09-09",
+            "description": "For my sanity!"
+        }
+    },
+    {
+        "model": "connectAPI.prayer",
+        "pk": 2,
+        "fields": {
+            "member_id": 1,
+            "group_id": 1,
+            "date": "2020-09-09",
+            "description": "This Project"
+        }
+    },
+    {
+        "model": "connectAPI.prayer",
+        "pk": 3,
+        "fields": {
+            "member_id": 3,
+            "group_id": 1,
+            "date": "2020-09-09",
+            "description": "Kids are sick"
+        }
+    },
+    {
+        "model": "connectAPI.prayer",
+        "pk": 4,
+        "fields": {
+            "member_id": 2,
+            "group_id": 2,
+            "date": "2020-09-09",
+            "description": "Pray for clarity"
+        }
+    },
+    {
+        "model": "connectAPI.prayer",
+        "pk": 5,
+        "fields": {
+            "member_id": 2,
+            "group_id": 2,
+            "date": "2020-09-09",
+            "description": "Pray for a job!"
+        }
+    }
+    
+    
+]
