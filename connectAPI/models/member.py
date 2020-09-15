@@ -14,3 +14,10 @@ class Member(models.Model):
     birthday = models.DateField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     is_admin = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = ("Member")
+        verbose_name_plural = ("Members")
+
+    def get_absolute_url(self):
+        return reverse("Member_detail", kwargs={"pk": self.pk})

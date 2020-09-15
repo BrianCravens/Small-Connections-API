@@ -18,9 +18,11 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from connectAPI import models
+from connectAPI.views import *
+from connectAPI.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
-# router.register(r'members', Members, 'member')
+router.register(r'members', Members, 'member')
 # router.register(r'groups', Groups, 'group')
 # router.register(r'membergroups', MemberGroups, 'membergroup')
 # router.register(r'meetings', Meetings, 'meeting')
@@ -29,4 +31,9 @@ router = routers.DefaultRouter(trailing_slash=False)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('register/', register_user),
+    path('login/', login_user),
+    path('api-token-auth/', obtain_auth_token),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
