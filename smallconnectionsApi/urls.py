@@ -23,8 +23,9 @@ from connectAPI.views import register_user, login_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'members', Members, 'member')
-# router.register(r'groups', Groups, 'group')
-# router.register(r'membergroups', MemberGroups, 'membergroup')
+router.register(r'groups', Groups, 'group')
+router.register(r'membergroups', MemberGroups, 'membergroup')
+# router.register(r're', MemberGroups, 'membergroup')
 # router.register(r'meetings', Meetings, 'meeting')
 # router.register(r'messages', Messages, 'message')
 # router.register(r'prayers', Prayers, 'prayer')
