@@ -7,7 +7,7 @@ class Group(models.Model):
 
     """This class defines the Group for the Small Connections application"""
 
-    leader = models.ForeignKey(Member, on_delete=models.DO_NOTHING)
+    leader = models.OneToOneField(Member, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=25)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=25)
