@@ -28,7 +28,7 @@ def login_user(request):
         # If authentication was successful, respond with their token
         if authenticated_user is not None:
             token = Token.objects.get(user=authenticated_user)
-            data = json.dumps({"valid": True, "token": token.key})
+            data = json.dumps({"valid": True, "token": token.key, "user": token.user_id})
             return HttpResponse(data, content_type='application/json')
         else:
             # Bad login details were provided. So we can't log the user in.
@@ -73,5 +73,5 @@ def register_user(request):
     token = Token.objects.create(user=new_user)
 
     # Return the token to the client
-    data = json.dumps({"token": token.key})
+    data = json.dumps({"token": token.key, "user": token.user_id})
     return HttpResponse(data, content_type='application/json')
