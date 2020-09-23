@@ -37,22 +37,34 @@ class Messages(ViewSet):
         Returns:
             Response -- JSON serialized message instance'''
         
+        try:
+            message = Message()
+            member = Member.objects.get(user=request.auth.user)
+            membergroup = MemberGroup.objects.filter(is_approved=True).filter(member_id=member)
+            group = Group.objects.get(pk=membergroup[0].group_id)
+            message.member = member
+            message.group = group
+            message.description = request.data['description']
 
-        message = Message()
-        member = Member.objects.get(user=request.auth.user)
-        membergroup = MemberGroup.objects.filter(is_approved=True).filter(member_id=member)
-        print(membergroup)
-        group = Group.objects.get(pk=membergroup[0].group_id)
-        message.member = member
-        message.group = group
-        message.description = request.data['description']
+            message.save()
 
-        message.save()
+            serializer = MessageSerializer(message, context={'request': request})
 
-        serializer = MessageSerializer(message, context={'request': request})
+            return Response(serializer.data)
+        except:
+            message = Message()
+            member = Member.objects.get(user=request.auth.user)
+            membergroup = Group.objects.filter(leader_id=member)
+            group = Group.objects.get(pk=membergroup[0].id)
+            message.member = member
+            message.group = group
+            message.description = request.data['description']
 
-        return Response(serializer.data)
+            message.save()
 
+            serializer = MessageSerializer(message, context={'request': request})
+
+            return Response(serializer.data)
 
 
     def retrieve(self, request, pk=None):
@@ -61,11 +73,9 @@ class Messages(ViewSet):
         Returns:
             Response -- JSON serialized message instance
         '''
-
         try:
             message = Message.objects.get(pk=pk)
             serializer = MessageSerializer(message, context={'request': request})
-            print(serializer.data)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -112,8 +122,18 @@ class Messages(ViewSet):
                 messages, many=True, context={'request': request})
         
             return Response(serializer.data)
+        except:
+            try:
+                currentUser = Member.objects.get(user=request.auth.user)
+                membergroup = Group.objects.filter(leader_id=currentUser)
+                messages = Message.objects.filter(group_id=membergroup[0].id)
+                
+                serializer = MessageSerializer(
+                    messages, many=True, context={'request': request})
             
-        except Exception as ex:
-            return HttpResponseServerError(ex)
+                return Response(serializer.data)
+
+            except Exception as ex:
+                return HttpResponseServerError(ex)
 
 

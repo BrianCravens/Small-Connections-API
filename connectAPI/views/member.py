@@ -62,6 +62,27 @@ class Members(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    def update(self, request, pk=None):
+        """Handle PUT requests for an individual Members
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        currentUser = Member.objects.get(user=request.auth.user)
+        member = Member.objects.get(pk=pk)
+        member.id = request.data['id']
+        member.phone = request.data['phone']
+        member.birthday = request.data['birthday']
+        member.address = request.data['address']
+        member.image = request.data['image']
+        member.is_admin = request.data['is_admin']
+        member.save()
+        user = User.objects.get(pk=member.user.id)
+        user.first_name = request.data['first_name']
+        user.save()
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+
     def list(self, request):
         
 

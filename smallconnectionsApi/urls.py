@@ -27,8 +27,8 @@ router.register(r'members', Members, 'member')
 router.register(r'groups', Groups, 'group')
 router.register(r'membergroups', MemberGroups, 'membergroup')
 router.register(r'messages', Messages, 'message')
-# router.register(r'meetings', Meetings, 'meeting')
-# router.register(r'prayers', Prayers, 'prayer')
+router.register(r'prayers', Prayers, 'prayer')
+router.register(r'meetings', Meetings, 'meeting')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

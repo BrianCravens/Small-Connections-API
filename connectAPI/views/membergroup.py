@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
+from rest_framework.decorators import action
 from connectAPI.models import MemberGroup, Group, Member
 from django.contrib.auth.models import User
 from connectAPI.views.member import MemberSerializer
@@ -30,6 +31,41 @@ class MemberGroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class MemberGroups(ViewSet):
     '''MemberGroups created in Small Connections'''
+
+    def create(self, request):
+        '''Handle POST request for MemberGroup
+        Returns:
+            Response -- JSON serialized membergroup instance'''
+        try:
+            membergroup = MemberGroup()
+            member = Member.objects.get(user=request.auth.user)
+            group = Group.objects.latest('id')
+            membergroup.is_approved = request.data['is_approved']
+            membergroup.member = member
+            membergroup.group = group
+
+            membergroup.save()
+
+            serializer = MemberGroupSerializer(membergroup, context={'request': request})
+
+            return Response(serializer.data)
+        
+        except:
+            membergroup = MemberGroup()
+            member = Member.objects.get(user=request.auth.user)
+            group = Group.objects.get(pk=request.data['group_id'])
+            membergroup.member = member
+            membergroup.group = group
+
+            membergroup.save()
+
+            serializer = MemberGroupSerializer(membergroup, context={'request': request})
+
+            return Response(serializer.data)
+        
+        # except Exception as ex:
+        #     return HttpResponseServerError(ex)
+
 
     def retrieve(self, request, pk=None):
         '''Handle GET requests for single MemberGroup
@@ -91,5 +127,41 @@ class MemberGroups(ViewSet):
             
         except Exception as ex:
             return HttpResponseServerError(ex)
+
+    @action(methods=['get', 'post', 'put'], detail=False)        
+    def listall(self, request):
+        '''Handle List of requests returning only requests of the group the leader is in'''
+        try:
+            currentUser = Member.objects.get(user=request.auth.user)
+            group = Group.objects.filter(leader_id=currentUser)
+            membergroups = MemberGroup.objects.filter(is_approved=True)
+            
+            serializer = MemberGroupSerializer(
+                membergroups, many=True, context={'request': request})
+        
+            return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
+    @action(methods=['get', 'post', 'put'], detail=False)        
+    def mygroup(self, request):
+        '''Handle List of requests returning only requests of the group the leader is in'''
+        try:
+            currentUser = Member.objects.get(user=request.auth.user)
+            membergroup = MemberGroup.objects.filter(member_id=currentUser).filter (is_approved=True)
+            print(membergroup[0].group_id)
+            group = Group.objects.filter(pk=membergroup[0].group_id)
+            print('group print',group[0].id)
+            membergroups = MemberGroup.objects.filter(is_approved=True).filter(group_id=group[0].id)
+            print('membergroups', membergroups)
+            
+            serializer = MemberGroupSerializer(
+                membergroups, many=True, context={'request': request})
+        
+            return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex, 'this error')
 
 

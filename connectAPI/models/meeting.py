@@ -10,7 +10,7 @@ class Meeting(models.Model):
 
     group = models.ForeignKey(Group, on_delete=models.DO_NOTHING)
     member = models.ForeignKey(Member, on_delete=models.DO_NOTHING)
-    date = models.DateTimeField()
+    date = models.DateField()
     content = models.TextField()
     title = models.CharField(max_length=255)
     image = models.ImageField(null=True, blank=True)
