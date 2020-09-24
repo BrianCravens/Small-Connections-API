@@ -51,7 +51,11 @@ class Messages(ViewSet):
             serializer = MessageSerializer(message, context={'request': request})
 
             return Response(serializer.data)
-        except:
+
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
+        try:
             message = Message()
             member = Member.objects.get(user=request.auth.user)
             membergroup = Group.objects.filter(leader_id=member)
@@ -65,6 +69,9 @@ class Messages(ViewSet):
             serializer = MessageSerializer(message, context={'request': request})
 
             return Response(serializer.data)
+            
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
 
     def retrieve(self, request, pk=None):

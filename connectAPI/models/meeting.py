@@ -13,5 +13,5 @@ class Meeting(models.Model):
     date = models.DateField()
     content = models.TextField()
     title = models.CharField(max_length=255)
-    image = models.ImageField(null=True, blank=True)
+    image = models.CharField(max_length=255,null=True, blank=True)
     url = models.URLField(null=True, blank=True)

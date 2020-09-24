@@ -12,7 +12,7 @@ class Member(models.Model):
     address = models.CharField(max_length=95, blank=True, null=True)
     phone = models.CharField(max_length=10, blank=True, null=True)
     birthday = models.DateField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.CharField(max_length=255,blank=True, null=True)
     is_admin = models.BooleanField(default=False)
 
     class Meta:

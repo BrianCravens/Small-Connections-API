@@ -14,5 +14,5 @@ class Group(models.Model):
     state = models.CharField(max_length=15)
     capacity = models.IntegerField()
     schedule = models.CharField(max_length=50)
-    image = models.ImageField()
+    image = models.CharField(max_length=255)
     kids = models.BooleanField(default=False)
