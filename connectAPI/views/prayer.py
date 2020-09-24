@@ -37,23 +37,24 @@ class Prayers(ViewSet):
         Returns:
             Response -- JSON serialized prayer instance'''
         
+        try:
+            prayer = Prayer()
+            member = Member.objects.get(user=request.auth.user)
+            membergroup = MemberGroup.objects.filter(is_approved=True).filter(member_id=member)
+            print(membergroup)
+            group = Group.objects.get(pk=membergroup[0].group_id)
+            prayer.member = member
+            prayer.group = group
+            prayer.description = request.data['description']
 
-        prayer = Prayer()
-        member = Member.objects.get(user=request.auth.user)
-        membergroup = MemberGroup.objects.filter(is_approved=True).filter(member_id=member)
-        print(membergroup)
-        group = Group.objects.get(pk=membergroup[0].group_id)
-        prayer.member = member
-        prayer.group = group
-        prayer.description = request.data['description']
+            prayer.save()
 
-        prayer.save()
+            serializer = PrayerSerializer(prayer, context={'request': request})
 
-        serializer = PrayerSerializer(prayer, context={'request': request})
+            return Response(serializer.data)
 
-        return Response(serializer.data)
-
-
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     def retrieve(self, request, pk=None):
         '''Handle GET requests for single Prayers
