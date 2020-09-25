@@ -70,6 +70,7 @@ class Members(ViewSet):
         """
         currentUser = Member.objects.get(user=request.auth.user)
         member = Member.objects.get(pk=pk)
+        print('MEMBER DATA:', member.user.first_name)
         member.id = request.data['id']
         member.phone = request.data['phone']
         member.birthday = request.data['birthday']
@@ -77,8 +78,11 @@ class Members(ViewSet):
         member.image = request.data['image']
         member.is_admin = request.data['is_admin']
         member.save()
-        user = User.objects.get(pk=member.user.id)
+        user = User.objects.get(pk=member.user_id)
+        print('USER DATA:', user)
         user.first_name = request.data['first_name']
+        user.last_name = request.data['last_name']
+        user.email = request.data['email']
         user.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
